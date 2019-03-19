@@ -1,0 +1,52 @@
+Joy Khatter 500866988
+
+#!bin/sh
+#assignment1.sh
+#Joy Khatter
+#Student ID-500866988
+#Assignment1 - Medslist Search
+#CCPS 393 Wednesday
+#Instructot: L.Hiraki
+
+while :
+do
+  echo "Enter Medication Code?"
+  read medi_code
+  if [ "$medi_code" == "ZZZ' ]
+  then 
+    echo "Good Bye"
+    break
+  fi
+
+  while :
+  do
+    echo "See Generic Name (G) or Dose (D)?"
+    read gen_dos
+    if [ "$gen_dos" == 'G' -o "$gen_dos" == 'D' ]
+    then
+      break
+    else
+      echo "Please enter only (G) or (D)."
+    fi
+  done
+
+  grep $medi_code medslist
+    while read line
+    do
+      if [ "gen_dos" == 'G' ]
+      then
+        echo $line|cut -c5-12
+        echo $line|cut -c13-25
+      else
+        if [ "gen_dos" == 'D' ]
+        then
+          echo $line|cut -c26-39
+          echo $line|cut -c40-46
+        fi
+      fi
+    done
+  if [ !-s ]
+  then
+    echo "No such medication code."
+  fi
+done      
